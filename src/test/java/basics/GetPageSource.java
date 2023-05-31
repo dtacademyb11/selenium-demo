@@ -19,7 +19,9 @@ public class GetPageSource {
         String expectedText = "Don't have an account?";
 
         // Before grabbing the html code of the page, wait 1 sec
-        Thread.sleep(1000);
+        Thread.sleep(1000); // Thread.sleep() is not a Selenium code or wait type. It is a java code that stops the execution for certain milliseconds
+        // In real world scenario, it is discouraged from using since it is not dynamic and may add extra execution time to your tests
+        // But you can still use it for small amount of waits like 1-3 secs, or when Selenium's own dynamic waits do not work
 
        String pageSourceCode = driver.getPageSource();
 
