@@ -33,19 +33,19 @@ public class WarmUp {
         Thread.sleep(2000);
 
 //        3. Verify that all search results contain 'rtx'
-//
-
-//        List<WebElement> elements = driver.findElements(By.xpath("//a[@class='item-title']"));
-//
-//        System.out.println(elements.size());
-//
-//        for (WebElement element : elements) {
-//            System.out.println(element.getText());
-//            Assert.assertTrue(element.getText().toLowerCase().contains("rtx"));
-//        }
 
 
-     //   4. Find the result with the lowest price click on it
+        List<WebElement> elements = driver.findElements(By.xpath("//a[@class='item-title']"));
+
+        System.out.println(elements.size());
+
+        for (WebElement element : elements) {
+            System.out.println(element.getText());
+            Assert.assertTrue(element.getText().toLowerCase().contains("rtx"));
+        }
+
+
+//        4. Find the result with the lowest price click on it
 
 
         List<WebElement> prices = driver.findElements(By.xpath("//li[@class='price-current']"));
@@ -70,14 +70,19 @@ public class WarmUp {
 
        driver.findElement(By.xpath(xpath)).click();
 
-//       driver.findElement(By.xpath("//label[@class='btn form-checkbox product-compare']//span")).click();
-         WebElement checkbox = driver.findElement(By.xpath("//label[@class='btn form-checkbox product-compare']//input"));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", checkbox);
 
         // ElementNotInteractableException: element not interactable
         // This exception happens when an element such as checkbox is in the html code, but is either hidden or obstructed by another element
+
         // The solution is to find other element nearby that lets you click on that element
-        // Another solution is to use JavaScriptExecutor interface method to click
+
+//       driver.findElement(By.xpath("//label[@class='btn form-checkbox product-compare']//span")).click();
+
+
+        // Another solution is to use JavaScriptExecutor interface to click
+
+        WebElement checkbox = driver.findElement(By.xpath("//label[@class='btn form-checkbox product-compare']//input"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", checkbox);
 
 
 
