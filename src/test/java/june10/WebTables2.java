@@ -52,8 +52,8 @@ public class WebTables2 {
         driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(city);
         String state = faker.address().state();
         driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(state);
-        String zipcode =faker.address().zipCode();
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zipcode.substring(0, 5));
+        String zipcode =faker.address().zipCode().substring(0, 5);
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zipcode);
 
         String credit = faker.business().creditCardNumber().replace("-", "");
 
@@ -68,10 +68,28 @@ public class WebTables2 {
         driver.findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
 
 
+        //Verify the data is stored properly in the table
 
 
+        driver.findElement(By.linkText("View all orders")).click();
 
+        String actualFull = driver.findElement(By.xpath(" //table[@class='SampleTable']//tr[2]//td[2]")).getText();
+        Assert.assertEquals(actualFull, full);
+
+        Assert.assertEquals(getCellText(driver, 1, 6), address);
+        Assert.assertEquals(getCellText(driver, 1, 7), city);
+        Assert.assertEquals(getCellText(driver, 1, 8), state);
+        Assert.assertEquals(getCellText(driver, 1, 9), zipcode);
+        Assert.assertEquals(getCellText(driver, 1, 11), credit);
+        Assert.assertEquals(getCellText(driver, 1, 12), expiry);
 
 
     }
+
+
+    public static String getCellText(WebDriver driver, int row, int column){
+        return driver.findElement(By.xpath(" //table[@class='SampleTable']//tr["+(row+1)+"]//td["+column+"]")).getText();
+    }
+
+    // SOLID
 }
