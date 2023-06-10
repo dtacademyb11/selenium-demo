@@ -68,7 +68,7 @@ public class DynamicTables {
         }
 
         System.out.println(list);
-        //Find the max without sorting
+        //Find the max and its index without sorting
 
         double max = list.get(0);
         int index = 0;
