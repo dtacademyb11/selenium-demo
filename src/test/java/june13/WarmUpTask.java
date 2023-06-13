@@ -1,4 +1,4 @@
-package june8;
+package june13;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,13 +8,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.sql.SQLOutput;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class DropdownsExercise {
+public class WarmUpTask {
 
     public static void main(String[] args) throws InterruptedException {
 
