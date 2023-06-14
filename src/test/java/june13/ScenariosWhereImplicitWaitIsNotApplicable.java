@@ -45,6 +45,8 @@ public class ScenariosWhereImplicitWaitIsNotApplicable {
         new Select(driver.findElement(By.id("sort-dropdown"))).selectByVisibleText("Lowest price");
 
         Thread.sleep(2000);  // Implicit wait cannot help for scenarios where wait needs to happen based on a specific condition
+        // Here the condition was to wait till the prices are updated to sorted by lowest after choosing the dropdown option
+        // You will need to use either explicit wait or hardcoded Thread.sleep
 
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='vehicle-card   ']//div[@class='price-section price-section-vehicle-card']//span[@class='primary-price']"));
 
