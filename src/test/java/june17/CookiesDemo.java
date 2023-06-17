@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class CookiesDemo {
 
@@ -31,10 +32,19 @@ public class CookiesDemo {
 
         driver.findElement(By.id("add-to-cart-button")).click();
         driver.findElement(By.xpath("//input[@aria-labelledby='attachSiNoCoverage-announce']")).click();
+        driver.findElement(By.xpath("//input[@aria-labelledby='attach-sidesheet-view-cart-button-announce']")).click();
 
 
+        Set<Cookie> cookies = driver.manage().getCookies();
+
+        for (Cookie cookie : cookies) {
+            System.out.println(cookie);
+        }
 
 
+        driver.manage().deleteAllCookies();
+
+        driver.navigate().refresh();
 
 
 //        Assert.assertTrue(!contacts.isDisplayed());
